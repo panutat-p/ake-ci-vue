@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-run-name: Triggered by ${{ github.actor }}
+run-name: Triggered by ${{ github.ref_name }}
 on:
   push:
     tags:
