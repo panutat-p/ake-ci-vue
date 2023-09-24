@@ -2,9 +2,15 @@
 
 https://github.com/panutat-p/ake-ci-vue
 
-## Resources
+## Documentations
 
 https://docs.github.com/en/actions/quickstart
+
+https://github.com/xRealNeon/VuePagesAction
+
+## Resources
+
+https://github.com/codingthailand/html-github-app
 
 https://github.com/codingthailand/vue-github-app
 
