@@ -40,3 +40,15 @@ jobs:
           path: dist
       - name: 💤 Teardown
         run: echo "This job's status is ${{ job.status }}."
+
+  deploy-code:
+    needs: build-code
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Download dist from artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-${{ github.ref_name }}
+          path: app
+      - name: 👉 List files
+        run: ls app
