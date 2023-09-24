@@ -33,6 +33,12 @@ jobs:
 
   run-unit-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 16.x
+          - 18.x
+          - 20.x
     steps:
       - name: 📦 check out repository code
         uses: actions/checkout@v4
