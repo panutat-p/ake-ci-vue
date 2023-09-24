@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "lint": "prettier --write .",
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
@@ -22,6 +23,7 @@
     "@vue/tsconfig": "^0.4.0",
     "jsdom": "^22.1.0",
     "npm-run-all2": "^6.0.6",
+    "prettier": "^3.0.3",
     "typescript": "~5.2.0",
     "vite": "^4.4.9",
     "vitest": "^0.34.4",
