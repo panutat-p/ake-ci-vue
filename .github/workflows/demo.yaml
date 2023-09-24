@@ -5,24 +5,47 @@ on:
     branches:
       - main
 jobs:
-  lint-prettier:
+  info:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+  lint-code:
+    runs-on: ubuntu-latest
+    steps:
       - name: 📦 check out repository code
         uses: actions/checkout@v4
-      - run: echo "👀 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🟢 The workflow is now ready to test your code on the runner."
       - name: 👀 list files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: 👉 set up Node.js
+      - name: 👉 Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
-      - run: npm ci
-      - run: npm run lint
-      - name: Teardown
-        run: echo "🟢 This job's status is ${{ job.status }}."
+      - name: 👉 Install dependencies
+        run: npm ci
+      - name: 👉 Run linter
+        run: npm run lint
+      - name: 💤 Teardown
+        run: echo "This job's status is ${{ job.status }}."
+
+  run-unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 check out repository code
+        uses: actions/checkout@v4
+      - name: 👀 list files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: 👉 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - name: 👉 Install dependencies
+        run: npm ci
+      - name: 👉 Run unit test
+        run: npm run test:unit
+      - name: 💤 Teardown
+        run: echo "This job's status is ${{ job.status }}."
