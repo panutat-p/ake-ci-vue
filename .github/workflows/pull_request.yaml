@@ -3,9 +3,12 @@ run-name: Triggered by merge pull request
 
 on:
   pull_request:
+    types:
+      - opened
     branches:
       - main
-      
+      - release/**
+
 jobs:
     build-job:
       runs-on: ubuntu-latest
